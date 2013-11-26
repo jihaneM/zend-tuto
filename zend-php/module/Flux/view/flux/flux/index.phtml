@@ -1,0 +1,31 @@
+<?php
+ // module/Album/view/album/album/index.phtml:
+
+ $title = 'My fluxV';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?php echo $this->url('flux', array('action'=>'add'));?>">Add new flux</a>
+ </p>
+
+ 
+ <table class="table">
+ <tr>
+     <th>Title</th>
+     <th>Artist</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($fluxV as $flux) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($flux->title);?></td>
+     <td><?php echo $this->escapeHtml($flux->artist);?></td>
+     <td>
+         <a href="<?php echo $this->url('flux',
+             array('action'=>'edit', 'id' => $flux->id));?>">Edit</a>
+         <a href="<?php echo $this->url('flux',
+             array('action'=>'delete', 'id' => $flux->id));?>">Delete</a>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>
